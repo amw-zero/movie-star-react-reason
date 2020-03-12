@@ -19,7 +19,7 @@ let make = () => {
     };
 
   <>
-    {ReasonReact.array(Array.map(movieElement(state), state.movies))}
+    {state.movies |> Array.map(movieElement(state))->ReasonReact.array}
     <button onClick={_ => apply(Command.viewTopMovies)}>
       {ReasonReact.string("view top movies")}
     </button>
