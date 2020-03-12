@@ -21,8 +21,8 @@ function MovieStar(Props) {
   var _movieElement = function (movie, string) {
     return React.createElement("p", {
                 onClick: (function (param) {
-                    return Curry._1(setState, (function (state) {
-                                  return MovieStarReason.Command.toggleFavoriteMovie(state, movie);
+                    return Curry._1(setState, (function (param) {
+                                  return MovieStarReason.Command.toggleFavoriteMovie(movie, param);
                                 }));
                   })
               }, string);
@@ -41,11 +41,9 @@ function MovieStar(Props) {
                     }
                   }), state.movies), React.createElement("button", {
                   onClick: (function (param) {
-                      return Curry._1(setState, (function (state) {
-                                    return MovieStarReason.Command.viewTopMovies(state);
-                                  }));
+                      return Curry._1(setState, MovieStarReason.Command.viewTopMovies);
                     })
-                }, "view top movies"), React.createElement("p", undefined, "test"));
+                }, "view top movies"));
 }
 
 var make = MovieStar;
