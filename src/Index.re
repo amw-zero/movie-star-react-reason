@@ -28,6 +28,11 @@ let makeContainer = text => {
 };
 
 ReactDOMRe.render(
-  <MovieStar />,
+  <TopMovies />,
+  makeContainer(""),
+);
+
+ReactDOMRe.render(
+  <FavoriteMovies />,
   makeContainer(""),
 );

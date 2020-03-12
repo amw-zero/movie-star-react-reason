@@ -7,7 +7,7 @@ var React = require("react");
 var Caml_obj = require("bs-platform/lib/js/caml_obj.js");
 var MovieStarReason = require("movie-star-reason/src/MovieStarReason.bs.js");
 
-function MovieStar(Props) {
+function TopMovies(Props) {
   var initialState_movies = [];
   var initialState = {
     movies: initialState_movies,
@@ -27,7 +27,7 @@ function MovieStar(Props) {
                   })
               }, string);
   };
-  return React.createElement(React.Fragment, undefined, $$Array.map((function (param) {
+  return React.createElement(React.Fragment, undefined, React.createElement("h1", undefined, "Top Movies"), $$Array.map((function (param) {
                     var state$1 = state;
                     var movie = param;
                     var match = List.filter((function (m) {
@@ -46,7 +46,7 @@ function MovieStar(Props) {
                 }, "view top movies"));
 }
 
-var make = MovieStar;
+var make = TopMovies;
 
 exports.make = make;
 /* react Not a pure module */
