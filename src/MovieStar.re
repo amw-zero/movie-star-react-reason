@@ -7,17 +7,21 @@ let make = () => {
   let (state, setState) = React.useState(() => initialState);
   let apply = fn => setState(fn);
 
-  let _movieElement = (movie, string) => 
-    <p onClick={_ => apply(Command.toggleFavoriteMovie(movie))}>{ReasonReact.string(string)}</p>
+  let _movieElement = (movie, string) =>
+    <p onClick={_ => apply(Command.toggleFavoriteMovie(movie))}>
+      {ReasonReact.string(string)}
+    </p>;
 
   let movieElement = (state, movie) =>
     switch (List.filter(m => m == movie, state.favoritedMovies)) {
-      | [movie] => _movieElement(movie, movie.title ++ " *")
-      | _ => _movieElement(movie, movie.title)
+    | [movie] => _movieElement(movie, movie.title ++ " *")
+    | _ => _movieElement(movie, movie.title)
     };
-  
+
   <>
     {ReasonReact.array(Array.map(movieElement(state), state.movies))}
-    <button onClick={_ => apply(Command.viewTopMovies)}>{ReasonReact.string("view top movies")}</button>
-  </>
+    <button onClick={_ => apply(Command.viewTopMovies)}>
+      {ReasonReact.string("view top movies")}
+    </button>
+  </>;
 };
