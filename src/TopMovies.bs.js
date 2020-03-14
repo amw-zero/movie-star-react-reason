@@ -8,20 +8,12 @@ var Caml_obj = require("bs-platform/lib/js/caml_obj.js");
 var MovieStarReason = require("movie-star-reason/src/MovieStarReason.bs.js");
 
 function TopMovies(Props) {
-  var initialState_movies = [];
-  var initialState = {
-    movies: initialState_movies,
-    favoritedMovies: /* [] */0
-  };
-  var match = React.useState((function () {
-          return initialState;
-        }));
-  var setState = match[1];
-  var state = match[0];
+  var state = Props.state;
+  var apply = Props.apply;
   var _movieElement = function (movie, string) {
     return React.createElement("p", {
                 onClick: (function (param) {
-                    return Curry._1(setState, (function (param) {
+                    return Curry._1(apply, (function (param) {
                                   return MovieStarReason.Command.toggleFavoriteMovie(movie, param);
                                 }));
                   })
@@ -41,7 +33,7 @@ function TopMovies(Props) {
                     }
                   }), state.movies), React.createElement("button", {
                   onClick: (function (param) {
-                      return Curry._1(setState, MovieStarReason.Command.viewTopMovies);
+                      return Curry._1(apply, MovieStarReason.Command.viewTopMovies);
                     })
                 }, "view top movies"));
 }

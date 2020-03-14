@@ -1,2 +1,2 @@
 [@react.component]
-let make = () => <h1>{ReasonReact.string("Favorite Movies")}</h1>
+let make = (~state, ~apply) => <h1>{ReasonReact.string("Favorite Movies")}</h1>

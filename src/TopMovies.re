@@ -1,12 +1,7 @@
 open MovieStarReason;
 
 [@react.component]
-let make = () => {
-  let initialState = {movies: [||], favoritedMovies: []};
-
-  let (state, setState) = React.useState(() => initialState);
-  let apply = fn => setState(fn);
-
+let make = (~state, ~apply) => {
   let _movieElement = (movie, string) =>
     <p onClick={_ => Command.toggleFavoriteMovie(movie) |> apply}>
       {ReasonReact.string(string)}

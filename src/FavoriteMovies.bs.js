@@ -3,6 +3,8 @@
 var React = require("react");
 
 function FavoriteMovies(Props) {
+  Props.state;
+  Props.apply;
   return React.createElement("h1", undefined, "Favorite Movies");
 }
 
