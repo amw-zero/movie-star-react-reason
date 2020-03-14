@@ -2,6 +2,7 @@
 
 var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
+var MovieStarReason = require("movie-star-reason/src/MovieStarReason.bs.js");
 var TopMovies$ReasonReactExamples = require("./TopMovies.bs.js");
 var FavoriteMovies$ReasonReactExamples = require("./FavoriteMovies.bs.js");
 
@@ -17,7 +18,11 @@ function MovieStar(Props) {
   var setState = match[1];
   var state = match[0];
   var apply = Curry.__1(setState);
-  return React.createElement(React.Fragment, undefined, React.createElement(TopMovies$ReasonReactExamples.make, {
+  return React.createElement(React.Fragment, undefined, React.createElement("button", {
+                  onClick: (function (param) {
+                      return Curry._1(setState, MovieStarReason.Command.clearFavoriteMovies);
+                    })
+                }, "Clear favorites"), React.createElement(TopMovies$ReasonReactExamples.make, {
                   state: state,
                   apply: apply
                 }), React.createElement(FavoriteMovies$ReasonReactExamples.make, {
