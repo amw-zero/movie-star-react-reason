@@ -8,7 +8,7 @@ let make = () => {
   let apply = fn => setState(fn);
 
   let _movieElement = (movie, string) =>
-    <p onClick={_ => apply(Command.toggleFavoriteMovie(movie))}>
+    <p onClick={_ => Command.toggleFavoriteMovie(movie) |> apply}>
       {ReasonReact.string(string)}
     </p>;
 
@@ -21,7 +21,7 @@ let make = () => {
   <>
     <h1>{ReasonReact.string("Top Movies")}</h1>
     {(state.movies |> Array.map(movieElement(state)))->ReasonReact.array}
-    <button onClick={_ => apply(Command.viewTopMovies)}>
+    <button onClick={_ => Command.viewTopMovies |> apply}>
       {ReasonReact.string("view top movies")}
     </button>
   </>;

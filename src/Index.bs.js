@@ -2,9 +2,8 @@
 
 var React = require("react");
 var ReactDom = require("react-dom");
-var TopMovies$ReasonReactExamples = require("./TopMovies.bs.js");
+var MovieStar$ReasonReactExamples = require("./MovieStar.bs.js");
 var ExampleStyles$ReasonReactExamples = require("./ExampleStyles.bs.js");
-var FavoriteMovies$ReasonReactExamples = require("./FavoriteMovies.bs.js");
 
 var style = document.createElement("style");
 
@@ -26,9 +25,7 @@ function makeContainer(text) {
   return content;
 }
 
-ReactDom.render(React.createElement(TopMovies$ReasonReactExamples.make, { }), makeContainer(""));
-
-ReactDom.render(React.createElement(FavoriteMovies$ReasonReactExamples.make, { }), makeContainer(""));
+ReactDom.render(React.createElement(MovieStar$ReasonReactExamples.make, { }), document.querySelector(".containerContent"));
 
 exports.style = style;
 exports.makeContainer = makeContainer;
