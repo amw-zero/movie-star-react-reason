@@ -7,7 +7,8 @@ let make = () => {
   let (state, setState) = React.useState(() => initialState);
   let apply = fn => setState(fn);
   let observer = s => setState(_ => s);
-  let server = f => f([|
+  let server = f =>
+    f([|
       {title: "Wayne's World"},
       {title: "Wayne's World 2"},
       {title: "Unabomber"},
@@ -22,7 +23,7 @@ let make = () => {
     <button onClick={_ => Command.asyncTopMovies(state, server, observer)}>
       {ReasonReact.string("View Top Movies")}
     </button>
-    <TopMovies state={state} apply={apply} />
-    <FavoriteMovies state={state} apply={apply} />
-  </>
+    <TopMovies state apply />
+    <FavoriteMovies state apply />
+  </>;
 };
