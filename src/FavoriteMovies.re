@@ -1,6 +1,6 @@
 open MovieStarReason;
 
-let favoriteMovieElement = movie => <p>{React.string(movie.title)}</p>;
+let favoriteMovieElement = movie => <p key={movie.title}>{React.string(movie.title)}</p>;
 
 [@react.component]
 let make = (~state, ~apply) => <>

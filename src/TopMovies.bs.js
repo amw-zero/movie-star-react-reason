@@ -12,6 +12,7 @@ function TopMovies(Props) {
   var apply = Props.apply;
   var _movieElement = function (movie, string) {
     return React.createElement("p", {
+                key: movie.title,
                 onClick: (function (param) {
                     return Curry._1(apply, (function (param) {
                                   return MovieStarReason.Command.toggleFavoriteMovie(movie, param);
@@ -31,11 +32,7 @@ function TopMovies(Props) {
                     } else {
                       return _movieElement(movie, movie.title);
                     }
-                  }), state.movies), React.createElement("button", {
-                  onClick: (function (param) {
-                      return Curry._1(apply, MovieStarReason.Command.viewTopMovies);
-                    })
-                }, "view top movies"));
+                  }), state.movies));
 }
 
 var make = TopMovies;

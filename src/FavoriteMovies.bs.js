@@ -5,7 +5,9 @@ var $$Array = require("bs-platform/lib/js/array.js");
 var React = require("react");
 
 function favoriteMovieElement(movie) {
-  return React.createElement("p", undefined, movie.title);
+  return React.createElement("p", {
+              key: movie.title
+            }, movie.title);
 }
 
 function FavoriteMovies(Props) {

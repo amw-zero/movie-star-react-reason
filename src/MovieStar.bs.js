@@ -7,22 +7,45 @@ var TopMovies$ReasonReactExamples = require("./TopMovies.bs.js");
 var FavoriteMovies$ReasonReactExamples = require("./FavoriteMovies.bs.js");
 
 function MovieStar(Props) {
-  var initialState_movies = [];
-  var initialState = {
-    movies: initialState_movies,
-    favoritedMovies: /* [] */0
-  };
   var match = React.useState((function () {
-          return initialState;
+          return MovieStarReason.defaultState;
         }));
   var setState = match[1];
   var state = match[0];
   var apply = Curry.__1(setState);
+  var observer = function (s) {
+    return Curry._1(setState, (function (param) {
+                  return s;
+                }));
+  };
+  var server = function (f) {
+    return Curry._1(f, [
+                {
+                  title: "Wayne's World"
+                },
+                {
+                  title: "Wayne's World 2"
+                },
+                {
+                  title: "Unabomber"
+                },
+                {
+                  title: "Cat in the Hat"
+                },
+                {
+                  title: "Sharkboy and Lavagirl"
+                }
+              ]);
+  };
   return React.createElement(React.Fragment, undefined, React.createElement("button", {
                   onClick: (function (param) {
                       return Curry._1(setState, MovieStarReason.Command.clearFavoriteMovies);
                     })
-                }, "Clear favorites"), React.createElement(TopMovies$ReasonReactExamples.make, {
+                }, "Clear Favorites"), React.createElement("button", {
+                  onClick: (function (param) {
+                      return MovieStarReason.Command.asyncTopMovies(state, server, observer);
+                    })
+                }, "View Top Movies"), React.createElement(TopMovies$ReasonReactExamples.make, {
                   state: state,
                   apply: apply
                 }), React.createElement(FavoriteMovies$ReasonReactExamples.make, {
